@@ -1,44 +1,87 @@
 <?php
+/* ----------- Arrrays ----------- */
 
-$numbers = [1, 44, 55, 22];
-$fruits = array('apple', 'orange', 'pear');
+/*
+  If you need to store multiple values, you can use arrays. Arrays hold "elements"
+*/
 
-//var_dump($numbers);
-//echo $fruits[1];
+// Simple array of numbers
+$numbers = [1, 2, 3, 4, 5];
 
-// associate arrays
+// Simple array of strings
+$colors = ['red', 'blue', 'green'];
+
+// Using the array function to create an array of numbers
+$numbers = [1, 2, 3, 4, 5];
+
+// Outputting values from an array
+echo $numbers[0];
+echo $numbers[3] + $numbers[4];
+
+// We can use print_r or var_dump to see the contents of an array
+var_dump($numbers);
+
+/* ------ Associative Arrays ----- */
+
+/*
+  Associative arrays allow us to use named keys to identify values.
+*/
+
 $colors = [
-    1 => 'red',
-    4 => 'blue',
-    6 => 'green'
+  1 => 'red',
+  2 => 'green',
+  3 => 'blue',
 ];
 
-//echo $colors[4];
+// echo $colors[1];
 
+// Strings as keys
 $hex = [
-    'red' => '#f00',
-    'blue' => '0f0',
-    'green' => '#00f'
-];
-//echo $hex['blue'];
-
-$person = [
-    'first_name' => 'Brad',
-    'last_name' => 'Traversy',
-    'email' => 'aa@gmail.com'
+  'red' => '#f00',
+  'green' => '#0f0',
+  'blue' => '#00f',
 ];
 
-// echo $person['first_name'];
+echo $hex['red'];
+var_dump($hex);
 
+/* ---- Multi-dimensional arrays ---- */
+
+/*
+  Multi-dimansional arrays are often used to store data in a table format.
+*/
+
+// Single person
+$person1 = [
+  'first_name' => 'Brad',
+  'last_name' => 'Traversy',
+  'email' => 'brad@gmail.com',
+];
+
+// Array of people
 $people = [
-    ['first_name' => 'Brad',
-    'last_name' => 'Traversy',
-    'email' => 'aa@gmail.com'],
-    ['first_name' => 'John',
-    'last_name' => 'Do',
-    'email' => 'jj@gmail.com']
-
+  $person1, //   [...$person1]
+  [
+    'first_name' => 'John',
+    'last_name' => 'Doe',
+    'email' => 'john@gmail.com',
+  ],
+  [
+    'first_name' => 'Jane',
+    'last_name' => 'Doe',
+    'email' => 'jane@gmail.com',
+  ],
 ];
 
-//echo $people[1]['first_name'];
-var_dump(json_encode(($people)));
+var_dump($people);
+
+// Accessing values in a multi-dimensional array
+echo $people[0]['first_name'];
+echo $people[2]['email'];
+
+// Encode to JSON
+var_dump(json_encode($people));
+
+// Decode from JSON
+$jsonobj = '{"first_name":"Brad","last_name": "Traversy","email":"brad@gmail.com"}';
+var_dump(json_decode($jsonobj));
